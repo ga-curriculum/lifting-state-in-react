@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](./assets/tktk-hero.png)
+# ![React State Management](./assets/tktk-hero.png)
 
 ## About
 
@@ -6,25 +6,21 @@ tktk Write a short but descriptive summary of the content in this module.
 
 ## Prerequisites
 
-- tktk
-- tktk
-- tktk
+- Intro to React
+- Building Your First React App
+- User Events in React
+- React State Management
+- React Components
 
 ## Content
 
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [Setup](./setup/README.md)                               | -- | -- | Setting up the development environment |
-| [tktk Microlesson Name](./tktk-microlesson-01/README.md) | -- | -- | tktk skills covered                    |
-| [tktk Microlesson Name](./tktk-microlesson-02/README.md) | -- | -- | tktk skills covered                    |
-| **Total content**                                        | -- | -- |                                        |
+| Lesson | Skills |
+| ------ | ------ |
+| [Setup](./setup/README.md)                               | Setting up the development environment |
+| [Concepts](./concepts/README.md)                               | Describe the implications of unidirectional data flow |
+| [Passing Functions as Props](./passing-functions-as-props/README.md) | Pass a function as a prop                    |
+| [Sharing State Between Components](./sharing-state-between-components/README.md) | Lift State Upwards to a Parent Component                    |
 
-## Level Up content
-
-| Lesson | Video Time | Video | Skills |
-| ------ |:----------:|:-----:| ------ |
-| [tktk Level Up Microlesson Name](./tktk-microlesson-03/README.md) | -- | -- | tktk skills covered |
-| **Total Level Up content**                                        | -- | -- |                     |
 
 ## References
 
@@ -49,3 +45,4 @@ tktk If there is not a deployed site related to this module this section and all
 ---
 
 **Find a 👾 bug 👾 or have suggestions? [Let us know](https://git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/blob/main/module-feedback.md)!**
+
