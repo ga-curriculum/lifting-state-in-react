@@ -1,4 +1,4 @@
-# ![[tktk Module Name] - References](./assets/hero.png)
+# ![Lifting State in React - References](./assets/hero.png)
 
 ## Lesson references
 

@@ -44,4 +44,3 @@ tktk If there is not a deployed site related to this module this section and all
 ---
 
 **Find a 👾 bug 👾 or have suggestions? [Let us know](https://git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/blob/main/module-feedback.md)!**
-
