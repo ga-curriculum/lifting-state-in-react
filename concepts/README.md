@@ -2,7 +2,7 @@
 
 **Learning objective:** By the end of this lesson, students will be able to tktk
 
-## Understanding data flow in React
+## Data flow in React
 
 React enforces a **unidirectional data flow**, where data travels in one direction down the component tree, from parent to child. This structure simplifies the state management of your application and can make debugging more straightforward. However, this pattern presents a challenge when child components need to communicate changes back to their parent or to siblings.
 
