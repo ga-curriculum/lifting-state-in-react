@@ -26,7 +26,7 @@ Comment out your code in `App.jsx`.  We're not going to be using it for this les
 
 Next, set up `App.jsx` like so:
 
-```js
+```jsx
 const App = () => {
 
 	const addTodo = (newTodo) => {
@@ -56,7 +56,7 @@ touch src/components/NewTodo.jsx
 
 In `src/components/NewTodo.jsx`, add the following:
 
-```js
+```jsx
 const NewTodo = (props) => {
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -82,7 +82,7 @@ import NewTodo from './components/NewTodo.jsx'
 
 And now instantiate it within the `return` statement of `App.jsx`:
 
-```js
+```jsx
 return (
 	<>
 		<h1>To Do App</h1>
@@ -99,7 +99,7 @@ Now we want to pass `addTodo` down from `App.jsx` to `NewTodo.jsx` in much the s
 
 Make the following adjustment to the `return` statement of `App.jsx`:
 
-```js
+```jsx
 <NewTodo addTodo={addTodo} />
 ```
 
@@ -112,6 +112,79 @@ const handleSubmit = (event) => {
 }
 ```
 
-Back in the browser, click the button and check the console to make sure that the text "data created within NewTodo component" has been logged.  The important thing here is that the text was logged by `addTodo` in `App.jsx`.  This function was called by `handleSubmit` within `NewTodo.jsx`, which passed `props.addTodo` the text as an argument.
+Back in the browser, click the "Create Todo" button and check the console to make sure that the text "data created within NewTodo component" has been logged.  The important thing here is that the text was logged by `addTodo` in `App.jsx`.  This function was called by `handleSubmit` within `NewTodo.jsx`, which passed `props.addTodo` the text as an argument.
 
 ![tktk Hunter, a diagram of the code please]
+
+### Set up State for `New Todo` Form
+
+At this point, we can pass information up to the parent, via the `addTodo` function.  Sadly, the only thing we're passing is the string "data created within NewTodo component" which is not terribly exciting.  Let's create an input so that the user can enter text, which will then be passed to `props.addTodo` instead of the static text.
+
+At the top of `NewTodo.jsx` import `useState`, so that we can keep track of what the user has typed:
+
+```js
+import { useState } from 'react';
+```
+
+Now initialize the state and its setter function inside the `NewTodo` function:
+
+```js
+const [newTodo, setNewTodo] = useState('')
+```
+
+Update your form in `NewTodo.jsx` like so:
+
+```jsx
+<form>
+	{newTodo}
+	<input type="text" onChange={handleChange}/>
+	<button>Create Todo</button>
+</form>
+```
+
+Finally, create the `handleChange` function, which will be called when the user types into the text input.  It will invoke `setNewTodo`, passing in the value of the input that the user entered:
+
+```js
+const handleChange = (event) => {
+	setNewTodo(event.target.value)
+}
+```
+
+Back in the browser, test this out by typing something into the text input.  You should see the same text appear right before the input.  This is because we put `{newTodo}` just after our `<form>` tag.
+
+### Pass Form State to `addTodo`
+
+Great!  Our form has its own internal state, but the text "data created within NewTodo component" is still being passed to `props.addTodo`.  Let's pass the `newTodo` state variable instead!
+
+In `NewTodo.jsx`, update your `handleSubmit` function like so:
+
+```js
+const handleSubmit = (event) => {
+	event.preventDefault()
+	props.addTodo(newTodo)
+}
+```
+
+Check back in the browser.  Type something into the input and click the "Create Todo" button.  You should now see that the browser console has logged the text that you input.  Yay!
+
+Just a little bit of cleanup now.  Let's remove the `{newTodo}` from inside the `<form>` tag in `NewTodo.jsx`.  That was just a bit of debugging that we don't need anymore.
+
+And lastly, let's add a nice little User Experience feature.  Currently, when we click the "Create Todo" button, the text we entered in the `<input>` tag remains.  I think it'd be nice if that value was cleared out, so that it's easier for the user to enter additional To-Do items.  Adjust the `<input>` tag like so:
+
+```jsx
+<input type="text" onChange={handleChange} value={newTodo}/>
+```
+
+Notice, we've set the `value` attribute of the `<input>` tag to `{newTodo}`, which is being updated as the user types.  This might seem unnecessary, even a bit circular, but it helps when it comes time to clear the input.  Adjust the `handleSubmit` function like so:
+
+```js
+const handleSubmit = (event) => {
+	event.preventDefault()
+	props.addTodo(newTodo)
+	setNewTodo('')
+}
+```
+
+Now, when we click "Create Todo" the `newTodo` state variable is set to the empty string.  This gets reflected in the `<input>` tag, which removes any text the user had previously typed.
+
+Try out using the form in the browser, and check the Dev Tools console.  Everything you type should show up there.  Congratulations!  The `NewTodo` form is complete!
