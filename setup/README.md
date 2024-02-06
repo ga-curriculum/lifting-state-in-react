@@ -1,26 +1,51 @@
-# ![[tktk Module Name] - Setup](./assets/hero.png)
+# ![Lifting State In React Components - Setup](./assets/hero.png)
 
 ## Setup
 
-Open your Terminal application and navigate to your **`~/code/ga/lectures`** directory:
-
 ```bash
-cd ~/code/ga/lectures
+npm create vite@latest
 ```
 
-Make a new directory called **`[tktk-module-name]`**, then enter this directory:
+You'll be prompted to provide a project name.  Call the app `lifting-state-in-react-components`.
+
+Next, you'll select a framework. Use the arrow keys to choose the `React` option, and hit `Enter`.
+
+Again, use the arrow keys to choose the `JavaScript` variant and hit `Enter`.
+
+Move into the project you just created and run `npm i` to install the dependencies:
 
 ```bash
-mkdir [tktk-module-name]
-cd [tktk-module-name]
+cd lifting-state-in-react-components
+npm i
 ```
 
-<!-- Other setup instructions here -->
-CREATOR GUIDANCE: Use the same start a vite app instructions as previous React lessons
-
-
-Open the contents of the directory in VSCode:
+Launch the app in VS Code:
 
 ```bash
 code .
+```
+
+Open the `App.jsx` file in the `src` directory and replace the contents of it with the following:
+
+```jsx
+const App = () => {
+
+  return (
+    <h1>Hello world!</h1>
+  );
+}
+
+export default App
+```
+
+Open `src/main.jsx` and remove the following line:
+
+```js
+import './index.css'
+```
+
+Run the dev server:
+
+```bash
+npm run dev
 ```
