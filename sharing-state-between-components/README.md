@@ -254,15 +254,15 @@ BUT YOU CAN'T! One of the rules of React is that you can't manipulate a state va
 	console.log(todos)
 	```
 
-or more concisely:
+5. Or more concisely:
 
-```jsx
-	// src/App.jsx
-	const addTodo = (newTodo) => {
-		setTodos([...todos, newTodo])
-		console.log(todos)
-	};
-```
+	```jsx
+		// src/App.jsx
+		const addTodo = (newTodo) => {
+			setTodos([...todos, newTodo])
+			console.log(todos)
+		};
+	```
 
 Whew!  Check the browser. Type something into the text input and click the "Create Todo" button. Each time the button is clicked, the Dev Tools console should log the entire `todos` array with whatever was typed into the text input as its last element.
 
