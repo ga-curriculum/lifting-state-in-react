@@ -100,8 +100,7 @@ import { useState } from 'react';
 And within the `App` function, define `count` state with an initial value of `0`:
 
 ```jsx
-// src/App.jsx
-const App = () => {
+  // src/App.jsx
 	const [count, setCount] = useState(0);
 ```
 
@@ -124,12 +123,12 @@ Update the `return` in `src/App.jsx` with the following:
 
 ```jsx
   // src/App.jsx
-	return (
-		<>
-			<p>Count: {count}</p>
-			<IncrementButton addOne={addOne} />
-		</>
-	);
+  return (
+    <>
+      <p>Count: {count}</p>
+      <IncrementButton addOne={addOne} />
+    </>
+  );
 ```
 
 Our final step is to update the `<button>` with an `onClick` event handler. The event handler should trigger the `addOne` function whenever a user clicks the button. Remember, the function can be accessed through the props object with `props.addOne`.
