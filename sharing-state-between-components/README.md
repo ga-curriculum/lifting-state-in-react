@@ -253,3 +253,26 @@ const addTodo = (newTodo) => {
 ```
 
 Whew!  Check the browser.  Type something into the text input and click the "Create Todo" button.  Each time the button is clicked, the Dev Tools console should log the entire `todos` array with whatever was typed into the text input as its last element.
+
+### Display the To-Do items
+
+Now that we've got the `App` component's `todos` state variable updating properly, all we need to do is display items in the page.  Update the `return` statement in `App.jsx` like so:
+
+```jsx
+return (
+	<>
+		<h1>To Do App</h1>
+		<NewTodo addTodo={addTodo} />
+		<ul>
+			{todos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	</>
+);
+```
+
+Try out the browser, and you should have a working To-Do app!  We have successfully lifted the state from the `<NewTodo>` form, used it to update the `<App>` component's state, and displayed the values coming up from `<NewTodo>` in `<App>`.  We have gone from child to parent.
+
+![tktk Hunter a glorious, face-melting diagram, please]()
+
