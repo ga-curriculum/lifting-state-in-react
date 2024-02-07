@@ -1,146 +1,350 @@
 # ![Lifting State in React - Sharing State Between Components](./assets/hero.png)
 
-**Learning objective:** By the end of this lesson, students will be able to tktk
+**Learning objective:** By the end of this lesson, students will be able to transfer state from one component to its parent and siblings
 
-This is the big microlesson of this module. 
+## Description
 
-There should be a child component that is a form with its own internal state and controlled form pattern going on.
+Now that we're able to pass a function from a parent down to a child, we're going to use that to explore how to pass information from the child back up to the parent.
 
-It will submit its state upwards into a stateful parent component.
+## Code-along
 
-That parent component probably has a list of objects that lives in state and that list gets modified by the child functions/components. The code-along-with-me section should get through ADDING a new item to the list and seeing that item get rendered into a sibling display component to the form.
+In this code along, we're going to create a To-Do app.  The user will be able to add items (strings) to a list of items on the page.
 
-Parent stateful container component - app
-Child form new object component. - incrementer button
-Child display objects list component. - display count
+The components in this app will be structured like so:
 
-Discuss the timing of what should happen in that onSubmit event listener since the form values should probably get cleared and the state of the child gets updated in addition to calling the function that will update the state of the parent.
+- App (parent)
+	- (child) Form for creating new todos
+	- (child) List of todos currently in App's state
 
+It will look basically like this:
 
+![tktk Hunter, please add awesome-o graphic]()
 
+### Seting up `App.jsx`
 
+Comment out your code in `App.jsx`.  We're not going to be using it for this lesson, but you should have it saved somewhere so that you can refer back to it later.
 
-
-## Overview
-let's get a sense of the mini app we will be building
-The code-along-with-me section should get through ADDING a new item to the list and seeing that item get rendered into a sibling display component to the form.
-see the component hiearchy diagram below
-describe app
-app will hold state, TodoList will render the todos held in state
-NewTodo will be responsible for holding the form state and passing the newly created todo to its parent
-so that it may be displayed by the its sibling
-
-![tktk Hunter component hiearchy for this mini app]()
-App
-  todos[string], handleSubmit
-NewTodo
-TodoList
-
-## mini setup
-
-create the state variable
+Next, set up `App.jsx` like so:
 
 ```jsx
-// App.jsx
+const App = () => {
+
+	const addTodo = (newTodo) => {
+		console.log(newTodo)
+	}
+
+
+	return (
+		<>
+			<h1>To Do App</h1>
+		</>
+	);
+}
+
+export default App
+```
+
+Test this in your browser!
+
+### Create `NewTodo` Form
+
+In your terminal, create a new component file like so:
+
+```bash
+touch src/components/NewTodo.jsx
+```
+
+In `src/components/NewTodo.jsx`, add the following:
+
+```jsx
+const NewTodo = (props) => {
+	const handleSubmit = (event) => {
+		event.preventDefault()
+		console.log("Creating a new To-Do...")
+	}
+
+	return (
+		<form onSubmit={handleSubmit}>
+			<input type="text" />
+			<button>Create Todo</button>
+		</form>
+	)
+}
+
+export default NewTodo
+```
+
+Now let's import it at the top of `App.jsx`:
+
+```js
+import NewTodo from './components/NewTodo.jsx'
+```
+
+And now instantiate it within the `return` statement of `App.jsx`:
+
+```jsx
+return (
+	<>
+		<h1>To Do App</h1>
+		<NewTodo />
+	</>
+);
+```
+
+Check your browser.  You should now see that the form has been added to the page.  Click the "Create Todo" button on the page and check the dev tools' console in your browser for the logged text "Creating a new To-Do...".
+
+### Pass `addTodo` to the `NewTodo` Form
+
+Now we want to pass `addTodo` down from `App.jsx` to `NewTodo.jsx` in much the same way that we passed `addOne` down from `App.jsx` to `IncrementButton.jsx`.
+
+Make the following adjustment to the `return` statement of `App.jsx`:
+
+```jsx
+<NewTodo addTodo={addTodo} />
+```
+
+Now the `addTodo` function, defined in `App.jsx` will be available within `NewTodo.jsx` as `props.addTodo`.  Let's use that within our `handleSubmit` function:
+
+```js
+const handleSubmit = (event) => {
+	event.preventDefault()
+	props.addTodo('data created within NewTodo component')
+}
+```
+
+Back in the browser, click the "Create Todo" button and check the console to make sure that the text "data created within NewTodo component" has been logged.  The important thing here is that the text was logged by `addTodo` in `App.jsx`.  This function was called by `handleSubmit` within `NewTodo.jsx`, which passed `props.addTodo` the text as an argument.
+
+![tktk Hunter, a diagram of the code please]
+
+### Set up State for `New Todo` Form
+
+At this point, we can pass information up to the parent, via the `addTodo` function.  Sadly, the only thing we're passing is the string "data created within NewTodo component" which is not terribly exciting.  Let's create an input so that the user can enter text, which will then be passed to `props.addTodo` instead of the static text.
+
+At the top of `NewTodo.jsx` import `useState`, so that we can keep track of what the user has typed:
+
+```js
+import { useState } from 'react';
+```
+
+Now initialize the state and its setter function inside the `NewTodo` function:
+
+```js
+const [newTodo, setNewTodo] = useState('')
+```
+
+Update your form in `NewTodo.jsx` like so:
+
+```jsx
+<form>
+	{newTodo}
+	<input type="text" onChange={handleChange}/>
+	<button>Create Todo</button>
+</form>
+```
+
+Finally, create the `handleChange` function, which will be called when the user types into the text input.  It will invoke `setNewTodo`, passing in the value of the input that the user entered:
+
+```js
+const handleChange = (event) => {
+	setNewTodo(event.target.value)
+}
+```
+
+Back in the browser, test this out by typing something into the text input.  You should see the same text appear right before the input.  This is because we put `{newTodo}` just after our `<form>` tag.
+
+### Pass Form State to `addTodo`
+
+Great!  Our form has its own internal state, but the text "data created within NewTodo component" is still being passed to `props.addTodo`.  Let's pass the `newTodo` state variable instead!
+
+In `NewTodo.jsx`, update your `handleSubmit` function like so:
+
+```js
+const handleSubmit = (event) => {
+	event.preventDefault()
+	props.addTodo(newTodo)
+}
+```
+
+Check back in the browser.  Type something into the input and click the "Create Todo" button.  You should now see that the browser console has logged the text that you input.  Yay!
+
+Just a little bit of cleanup now.  Let's remove the `{newTodo}` from inside the `<form>` tag in `NewTodo.jsx`.  That was just a bit of debugging that we don't need anymore.
+
+And lastly, let's add a nice little User Experience feature.  Currently, when we click the "Create Todo" button, the text we entered in the `<input>` tag remains.  I think it'd be nice if that value was cleared out, so that it's easier for the user to enter additional To-Do items.  Adjust the `<input>` tag like so:
+
+```jsx
+<input type="text" onChange={handleChange} value={newTodo}/>
+```
+
+Notice, we've set the `value` attribute of the `<input>` tag to `{newTodo}`, which is being updated as the user types.  This might seem unnecessary, even a bit circular, but it helps when it comes time to clear the input.  Adjust the `handleSubmit` function like so:
+
+```js
+const handleSubmit = (event) => {
+	event.preventDefault()
+	props.addTodo(newTodo)
+	setNewTodo('')
+}
+```
+
+Now, when we click "Create Todo" the `newTodo` state variable is set to the empty string.  This gets reflected in the `<input>` tag, which removes any text the user had previously typed.
+
+Try out using the form in the browser, and check the Dev Tools console.  Everything you type should show up there.  Congratulations!  The `NewTodo` form is complete, and we've successfully lifted its `newTodo` state variable up to the `App` component!
+
+### Set Up State for `App`
+
+The goal of this next section is to set up state for the `App` component and incorporate the `newTodo` data coming up from the `<NewTodo>` child component.  Let's start with initializing state in `App.jsx`.  At the top of the file, import `useState`:
+
+```js
+import { useState } from 'react';
+```
+
+Inside the `App` function, initialize a state variable `todo` as an empty array and generate its setter function:
+
+```js
 const [todos, setTodos] = useState([])
 ```
 
-create the files
+Now comes the interesting part.  We want `addTodo` to append its `newTodo` parameter onto the `todos` state array and then log `todos`.  You might think you could do something like the following:
+
+```js
+const addTodo = (newTodo) => {
+	todos.push(newTodo)
+	setTodos(todos)
+	console.log(todos)
+}
+```
+
+BUT YOU CAN'T!  One of the rules of React is that you can't manipulate a state variable outside of a setter function like `setTodos`.  Instead, what you have to do is create a brand new empty array, fill it up with the current values of `todos`, and then finally add `newTodo` to the end of it.  This way the original `todos` state variable remains untouched, at least until `setTodos` itself changes it.
+
+So we start with a brand new empty array inside `addTodo`:
+
+```js
+const newArray = []
+```
+
+Now alter that statement to use the spread operator, which takes the values of an array and **spreads** them out into a new array:
+
+```js
+const newArray = [...todos]
+```
+
+Now `newArray` is a duplicate of `todos`.  Let's add on the `newTodo` parameter to the end of the array:
+
+```js
+const newArray = [...todos, newTodo]
+```
+
+We can now pass this into `setTodos` like so:
+
+```js
+const addTodo = (newTodo) => {
+	const newArray = [...todos, newTodo]
+	setTodos(newArray)
+	console.log(todos)
+}
+```
+
+or more concisely:
+
+```js
+const addTodo = (newTodo) => {
+	setTodos([...todos, newTodo])
+	console.log(todos)
+}
+```
+
+Whew!  Check the browser.  Type something into the text input and click the "Create Todo" button.  Each time the button is clicked, the Dev Tools console should log the entire `todos` array with whatever was typed into the text input as its last element.
+
+### Display the To-Do items
+
+Now that we've got the `App` component's `todos` state variable updating properly, all we need to do is display items in the page.  Update the `return` statement in `App.jsx` like so:
+
+```jsx
+return (
+	<>
+		<h1>To Do App</h1>
+		<NewTodo addTodo={addTodo} />
+		<ul>
+			{todos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	</>
+);
+```
+
+Try out the browser, and you should have a working To-Do app!  We have successfully lifted the state from the `<NewTodo>` form, used it to update the `<App>` component's state, and displayed the values coming up from `<NewTodo>` in `<App>`.  We have gone from child to parent.
+
+![tktk Hunter a glorious, face-melting diagram, please]()
+
+### Move the Todos List into Its Own Component
+
+Now that we've gone from child component to parent component, let's see how to go from child component to sibling component.  It's actually easier than you think.  Basically, we just pass the `todos` state variable in `<App>` down into a new child, which we'll call `<TodosList>`.  In this way, the data comes up from `<NewTodo>` into `<App>` and then goes back down into `<TodosList>`.
+
+![tktk Hunter, show these men of will what will really is]()
+
+First, let's create a new component to hold our `<TodosList>`:
 
 ```bash
-touch NewTodo.jsx TodoList.jsx
+touch src/components/TodosList.jsx
 ```
 
-stub up the files
-add the following starter code to each
-
-- code that renders any todos in todo list
-- setup html in new todo
-```jsx
-...
-```
-
-import the files
-```jsx
-// App.jsx
-import
-```
-
-check your browser
-it should look like this:
-![tktk Hunter screenshot]()
-
-## rendering todos
-
-add some strings to the initial state of todos
-pass it down to the TodoList which we stubbed up in the previous step
-console log the todos
-map through todos
-and render some lis
-before moving on, update todos state back to an empty array
-
-## make functional form
-
-NewTodoForm.jsx
-
-- state -> formState / newTodo
-- handleChange
-
-state is just a simple string
-single input in a form
-(no complicated handleChange)
+Add the following to it:
 
 ```jsx
-const handleSubmit = () => {
-  console.log('The form has been submitted)
-  // clear state
+const TodoList = (props) => {
+	const tempTodos = ["first", "second", "third"]
+	return(
+		<ul>
+			{tempTodos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	)
 }
-<form onSubmit={handleSubmit}>
+
+export default TodoList
 ```
 
-test it out, make sure you can update the form
+There's nothing too exciting here.  It's currently a standalone component with a static array that gets mapped-over to generate `<li>` elements.  Import that component into `App.jsx`:
 
+```js
+import TodoList from './components/TodoList.jsx'
+```
 
-## Lifting state
-
-1. define the function/describe the function
-accept newTodo as an argument
-use your set state function to copy existing todos state,
-add the new todo at the end of that array
+Add it to the `return` statement in `App.jsx` and remove the `<ul>` that we created in the last section.  The `return` statement in `App.js` should now look like this:
 
 ```jsx
-//app.jsx
+return (
+	<>
+		<h1>To Do App</h1>
+		<NewTodo addTodo={addTodo} />
+		<TodoList/>
+	</>
+);
+```
 
-const addTodo = (newTodo) => {
-  setTodos([...todos, newTodo])
+If you check the browser, you should see that a static three-item list has replaced the dynamic list we previously had.  That's fine.  We'll make `<TodoList>` dynamic next.
+
+Pass the `todos` state variable in `App.jsx` into `<TodoList/>`:
+
+```jsx
+<TodoList todos={todos} />
+```
+
+Now, in `TodoList.jsx` use `props.todos` in place of `tempTodos` (which you should remove now).  This should be what `Todos.jsx` looks like when completed:
+
+```jsx
+const TodoList = (props) => {
+	return(
+		<ul>
+			{props.todos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	)
 }
+
+export default TodoList
 ```
 
-2. pass the function down
-
-confirm that the function is available in the child
-```jsx
-console.log(props.addTodo)
-```
-
-3. build out handleSubmit
-Discuss the timing of what should happen in that onSubmit event listener since the form values should probably get cleared and the state of the child gets updated in addition to calling the function that will update the state of the parent.
-
-```jsx
-const handleSubmit = () => {
-  props.addTodo(newTodo)
-  // clear form state / set new todo back to an empty string
-  setNewTodo('')
-}
-```
-
-4. dealing with the event handler
-
-```jsx
-<form onSubmit={handleSubmit}>
-```
-
-try it out in your browser, notice how the new todo entered into your NewTodoForm component, is displayed in the sibling TodoList
-
-
-
+Congrats!  You have now lifted state up from `NewTodo.jsx` into `App.jsx` and then passed it back down into `TodoList.jsx`, effectively moving state from `NewTodo.jsx` to its sibling component `TodoList.jsx`.
