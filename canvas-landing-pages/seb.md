@@ -1,4 +1,4 @@
-# ![[tktk Module Name]](../assets/tktk-hero.png)
+# ![Lifting State in React](../assets/tktk-hero.png)
 
 ## About
 
