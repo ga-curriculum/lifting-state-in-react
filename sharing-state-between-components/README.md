@@ -187,4 +187,69 @@ const handleSubmit = (event) => {
 
 Now, when we click "Create Todo" the `newTodo` state variable is set to the empty string.  This gets reflected in the `<input>` tag, which removes any text the user had previously typed.
 
-Try out using the form in the browser, and check the Dev Tools console.  Everything you type should show up there.  Congratulations!  The `NewTodo` form is complete!
+Try out using the form in the browser, and check the Dev Tools console.  Everything you type should show up there.  Congratulations!  The `NewTodo` form is complete, and we've successfully lifted its `newTodo` state variable up to the `App` component!
+
+### Set Up State for `App`
+
+The goal of this next section is to set up state for the `App` component and incorporate the `newTodo` data coming up from the `<NewTodo>` child component.  Let's start with initializing state in `App.jsx`.  At the top of the file, import `useState`:
+
+```js
+import { useState } from 'react';
+```
+
+Inside the `App` function, initialize a state variable `todo` as an empty array and generate its setter function:
+
+```js
+const [todos, setTodos] = useState([])
+```
+
+Now comes the interesting part.  We want `addTodo` to append its `newTodo` parameter onto the `todos` state array and then log `todos`.  You might think you could do something like the following:
+
+```js
+const addTodo = (newTodo) => {
+	todos.push(newTodo)
+	setTodos(todos)
+	console.log(todos)
+}
+```
+
+BUT YOU CAN'T!  One of the rules of React is that you can't manipulate a state variable outside of a setter function like `setTodos`.  Instead, what you have to do is create a brand new empty array, fill it up with the current values of `todos`, and then finally add `newTodo` to the end of it.  This way the original `todos` state variable remains untouched, at least until `setTodos` itself changes it.
+
+So we start with a brand new empty array inside `addTodo`:
+
+```js
+const newArray = []
+```
+
+Now alter that statement to use the spread operator, which takes the values of an array and **spreads** them out into a new array:
+
+```js
+const newArray = [...todos]
+```
+
+Now `newArray` is a duplicate of `todos`.  Let's add on the `newTodo` parameter to the end of the array:
+
+```js
+const newArray = [...todos, newTodo]
+```
+
+We can now pass this into `setTodos` like so:
+
+```js
+const addTodo = (newTodo) => {
+	const newArray = [...todos, newTodo]
+	setTodos(newArray)
+	console.log(todos)
+}
+```
+
+or more concisely:
+
+```js
+const addTodo = (newTodo) => {
+	setTodos([...todos, newTodo])
+	console.log(todos)
+}
+```
+
+Whew!  Check the browser.  Type something into the text input and click the "Create Todo" button.  Each time the button is clicked, the Dev Tools console should log the entire `todos` array with whatever was typed into the text input as its last element.
