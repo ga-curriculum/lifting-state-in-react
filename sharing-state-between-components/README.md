@@ -4,7 +4,7 @@
 
 ## Overview
 
-Let's put the concept of lifting state into practice with a practical example. We'll construct a To-Do application in which data is passed up from a child component to its parent. 
+Let's put the concept of lifting state into practice with a real-world example. We'll construct a To-Do application in which data is passed up from a child component to its parent. 
 
 Our To-Do app will consist of the following:
 
@@ -12,7 +12,7 @@ Our To-Do app will consist of the following:
 
 - **App (parent component)**: The main component that holds state and the child subcomponents.
 - **NewTodo (child component)**: A form component for creating new to-do items.
-- **TodoList (child component)**: a list component responsible for rendering the todos held in state.
+- **TodoList (child component)**: A list component responsible for rendering the todos held in state.
 
 ### Setting up `App.jsx`
 
