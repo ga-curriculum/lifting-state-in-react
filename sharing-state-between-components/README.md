@@ -20,7 +20,7 @@ It will look basically like this:
 
 ![tktk Hunter, please add awesome-o graphic]()
 
-### Seting up `App.jsx`
+### Setting up `App.jsx`
 
 Comment out your code in `App.jsx`.  We're not going to be using it for this lesson, but you should have it saved somewhere so that you can refer back to it later.
 
@@ -30,18 +30,17 @@ Next, set up `App.jsx` like so:
 const App = () => {
 
 	const addTodo = (newTodo) => {
-		console.log(newTodo)
-	}
-
+		console.log(newTodo);
+	};
 
 	return (
 		<>
 			<h1>To Do App</h1>
 		</>
 	);
-}
+};
 
-export default App
+export default App;
 ```
 
 Test this in your browser!

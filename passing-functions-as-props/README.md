@@ -13,9 +13,9 @@ For example, passing a string might look like the following:
   const myString = 'Hello World!';
 
   // Pass down props:
-	return (
+  return (
     <ChildComponent myString={myString} />
-	);
+  );
 ```
 
 Within `ChildComponent`, that string value can be accessed through `props.myString`. 
@@ -29,9 +29,9 @@ Similarly, passing a function might look like this:
   };
 
   // Pass down props:
-	return (
+  return (
     <ChildComponent greetUser={greetUser} />
-	);
+  );
 ```
 
 In `ChildComponent`, the function can be called upon to get its return value:
@@ -39,14 +39,10 @@ In `ChildComponent`, the function can be called upon to get its return value:
 ```jsx
 const ChildComponent = (props) => {
   // Call upon the function:
-	const msg = props.greetUser();
+  const msg = props.greetUser();
 
   // Display the value returned by the function:
-	return (
-		<>
-      {msg}
-		</>
-	);
+  return msg;
 };
 ```
 
@@ -117,7 +113,7 @@ Add the following function:
 
 ```jsx
   // src/App.jsx
-	const addOne = () => {
+  const addOne = () => {
     setCount(count + 1);
   };
 ```
