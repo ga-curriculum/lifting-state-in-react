@@ -276,3 +276,75 @@ Try out the browser, and you should have a working To-Do app!  We have successfu
 
 ![tktk Hunter a glorious, face-melting diagram, please]()
 
+### Move the Todos List into Its Own Component
+
+Now that we've gone from child component to parent component, let's see how to go from child component to sibling component.  It's actually easier than you think.  Basically, we just pass the `todos` state variable in `<App>` down into a new child, which we'll call `<TodosList>`.  In this way, the data comes up from `<NewTodo>` into `<App>` and then goes back down into `<TodosList>`.
+
+![tktk Hunter, show these men of will what will really is]()
+
+First, let's create a new component to hold our `<TodosList>`:
+
+```bash
+touch src/components/TodosList.jsx
+```
+
+Add the following to it:
+
+```jsx
+const TodoList = (props) => {
+	const tempTodos = ["first", "second", "third"]
+	return(
+		<ul>
+			{tempTodos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	)
+}
+
+export default TodoList
+```
+
+There's nothing too exciting here.  It's currently a standalone component with a static array that gets mapped-over to generate `<li>` elements.  Import that component into `App.jsx`:
+
+```js
+import TodoList from './components/TodoList.jsx'
+```
+
+Add it to the `return` statement in `App.jsx` and remove the `<ul>` that we created in the last section.  The `return` statement in `App.js` should now look like this:
+
+```jsx
+return (
+	<>
+		<h1>To Do App</h1>
+		<NewTodo addTodo={addTodo} />
+		<TodoList/>
+	</>
+);
+```
+
+If you check the browser, you should see that a static three-item list has replaced the dynamic list we previously had.  That's fine.  We'll make `<TodoList>` dynamic next.
+
+Pass the `todos` state variable in `App.jsx` into `<TodoList/>`:
+
+```jsx
+<TodoList todos={todos} />
+```
+
+Now, in `TodoList.jsx` use `props.todos` in place of `tempTodos` (which you should remove now).  This should be what `Todos.jsx` looks like when completed:
+
+```jsx
+const TodoList = (props) => {
+	return(
+		<ul>
+			{props.todos.map((todo, index)=>{
+				return <li key={index}>{todo}</li>
+			})}
+		</ul>
+	)
+}
+
+export default TodoList
+```
+
+Congrats!  You have now lifted state up from `NewTodo.jsx` into `App.jsx` and then passed it back down into `TodoList.jsx`, effectively moving state from `NewTodo.jsx` to its sibling component `TodoList.jsx`.
