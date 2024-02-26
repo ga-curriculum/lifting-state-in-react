@@ -4,12 +4,12 @@
 
 ## Passing functions as props
 
-In order to lift state, we must first learn how to pass a function down through props. Thankfully, in React passing fuctions as props is much like passing any other piece of data.
+We must first learn how to pass a function down through props to lift state. Thankfully, in React, passing functions as props is much like passing any other piece of data.
 
 For example, passing a string might look like the following:
 
 ```jsx
-  // Define the string variable in parent component:
+  // Define the string variable in the parent component:
   const myString = 'Hello World!';
 
   // Pass down props:
@@ -23,7 +23,7 @@ Within `ChildComponent`, that string value can be accessed through `props.myStri
 Similarly, passing a function might look like this:
 
 ```jsx
-  // Define the function in parent component:
+  // Define the function in the parent component:
   const greetUser = () => {
     return 'Hello World!';
   };
@@ -46,15 +46,15 @@ const ChildComponent = (props) => {
 };
 ```
 
-As you can see, functions can be passed down through props as you would any other data.
+As you can see, functions can be passed down through props like any other data.
 
 ## Lifting state through props
 
-Now that we've seen how functions can be passed down as props, let's add a bit of complexity. 
+Now that we've seen how functions can be passed down as props, let's add complexity. 
 
-To effectively 'lift state up', the function being passed from the parent component to the child component must be one that alters the state of the parent component. Once a child component receives a state-modifying function through props, it can *call upon* that function and thereby influence the parent component's state.
+To effectively 'lift state up', the function passed from the parent component to the child component must alter the parent component's state. Once a child component receives a state-modifying function through props, it can *call upon* that function and thereby influence the parent component's state.
 
-Let's apply this concept with a small counter application. In our app, we'll display a counter in `src/App.jsx`, and build functionality that allows a child component to increment the value of the count.
+Let's apply this concept with a small counter-application. In our app, we'll display a counter in `src/App.jsx`, and build a functionality that allows a child component to increment the value of the count.
 
 Run the following command in your terminal:
 
@@ -62,7 +62,7 @@ Run the following command in your terminal:
 touch src/components/IncrementButton.jsx
 ```
 
-Our `IncrementButton` component will be just that, a `<button>` that increments the display count.
+Our `IncrementButton` component will be a `<button>` that increments the display count.
 
 Add the following to `src/components/IncrementButton.jsx`:
 
@@ -88,7 +88,7 @@ At the top of `src/App.jsx`, add the following import:
 import IncrementButton from './components/IncrementButton.jsx';
 ```
 
-Our counter application will require a piece of state that holds the current count value. To do that, we'll need to import the `useState` hook.
+Our counter application will require a state that holds the current count value. We'll need to import the `useState` hook to do that.
 
 Add the following to the top of `src/App.jsx`:
 
@@ -97,16 +97,16 @@ Add the following to the top of `src/App.jsx`:
 import { useState } from 'react';
 ```
 
-And within the `App` function, define `count` state with an initial value of `0`:
+Within the `App` function, define `count` state with an initial value of `0`:
 
 ```jsx
   // src/App.jsx
-	const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 ```
 
-Next we can address the function that will update state. The function should increment the current `count` value by `1`.
+Next, we can address the function that will update the state. The function should increment the current `count` value by `1`.
 
-It's important that this function is defined in the parent `App` component, where the `count` state resides. Once defined, we will pass the function down to the child component (`IncrementButton`), enabling it to invoke the function and increment the `count`.
+This function must be defined in the parent `App` component, where the `count` state resides. Once defined, we will pass the function down to the child component (`IncrementButton`), enabling it to invoke the function and increment the `count`.
 
 Add the following function:
 
@@ -117,7 +117,7 @@ Add the following function:
   };
 ```
 
-Next we can render the `IncrementButton` component, and pass down the `addOne` function through props.
+Next, we can render the `IncrementButton` component and pass down the `addOne` function through props.
 
 Update the `return` in `src/App.jsx` with the following:
 
@@ -144,4 +144,4 @@ In `src/components/IncrementButton.jsx`, update the `<button>` as shown below:
   );
 ```
 
-Now when we click on the 'Increment' button, it calls upon the `addOne` function as defined in `App`. The `addOne` function  updates the `count` state and triggers a rerender with the increased display count. Through this, the child component is able to enact state changes on the parent.
+When we click the 'Increment' button, it calls upon the `addOne` function as defined in `App`. The `addOne` function updates the `count` state and triggers a rerender with the increased display count. Through this, the child component can enact state changes on the parent.

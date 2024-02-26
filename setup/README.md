@@ -75,7 +75,7 @@ To add this project to GitHub, initialize a Git repository:
 git init
 ```
 
-Make a new repository on [GitHub](https://github.com/) named [tktk-module-name]. 
+Make a new repository on [GitHub](https://github.com/) named `lifting-state-in-react-components`. 
 
 Link your local project to your remote GitHub repo:
 
