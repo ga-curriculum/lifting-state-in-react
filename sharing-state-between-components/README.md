@@ -120,8 +120,6 @@ Now the `addTodo` function, defined in `App.jsx` will be available within `NewTo
 
 Back in the browser, click the "Create Todo" button and check the console to ensure the text "data created within NewTodo component" has been logged. The important thing here is that the text was logged by `addTodo` in `App.jsx`. This function was called by `handleSubmit` within `NewTodo.jsx`. There, we passed `props.addTodo` an argument of `'data created within NewTodo component'`.
 
-![tktk Hunter, a diagram of the code please]()
-
 ### Setting up state for the `New Todo` form
 
 At this point, we can pass information to the parent, via the `addTodo` function. Sadly, we're only passing the string "data created within NewTodo component" which is not terribly exciting. Let's create an input so the user can enter text, which will then be passed to `props.addTodo` instead of the static text.
@@ -287,13 +285,9 @@ Now that we've got the `App` component's `todos` state variable updating properl
 
 Try out the browser, and you should have a working Todo app! We have successfully lifted the state from the `<NewTodo>` form, used it to update the `<App>` component's state, and displayed the values coming up from `<NewTodo>` in `<App>`. We have gone from child to parent.
 
-![tktk Hunter a glorious, face-melting diagram, please]()
-
 ### Moving the list to its own component
 
 Now that we've gone from the child component to the parent component let's see how to go from the child component to the sibling component. It's actually easier than you think. We just pass the `todos` state variable in `<App>` down into a new child, which we'll call `<TodoList>`. In this way, the data comes up from `<NewTodo>` into `<App>` and then goes back down into `<TodoList>`.
-
-![tktk Hunter, show these men of will what will really is]()
 
 First, let's create a new component to hold our `<TodoList>`:
 
@@ -364,5 +358,7 @@ const TodoList = (props) => {
 
 export default TodoList;
 ```
+
+![Lifting state](./assets/lifting.png)
 
 Congrats! You have now lifted state up from `NewTodo.jsx` into `App.jsx` and then passed it back down into `TodoList.jsx`, effectively moving state from `NewTodo.jsx` to its sibling component `TodoList.jsx`.

@@ -1,4 +1,4 @@
-# ![Lifting State in React](./assets/tktk-hero.png)
+# ![Lifting State in React](./assets/hero.png)
 
 ## About
 
@@ -15,16 +15,14 @@ In this module, students will learn how to lift state up to a parent component a
 
 | Lesson | Skills |
 | ------ | ------ |
-| [Setup](./setup/README.md)                               | Setting up the development environment |
-| [Concepts](./concepts/README.md)                               | Describe the implications of unidirectional data flow |
-| [Passing Functions as Props](./passing-functions-as-props/README.md) | Pass a function as a prop                    |
-| [Sharing State Between Components](./sharing-state-between-components/README.md) | Lift State Upwards to a Parent Component                    |
-
+| [Setup](./setup/README.md) | Setting up the development environment |
+| [Concepts](./concepts/README.md) | Describe the implications of unidirectional data flow |
+| [Passing Functions as Props](./passing-functions-as-props/README.md) | Pass a function as a prop |
+| [Sharing State Between Components](./sharing-state-between-components/README.md) | Lift State Upwards to a Parent Component |
 
 ## References
 
 📖 [Reference Materials](./references/README.md)
-
 
 ## Internal resources
 
