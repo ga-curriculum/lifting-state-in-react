@@ -6,10 +6,8 @@ In this module, we focus on the concept of lifting state in React applications. 
 
 ## Prerequisites
 
-- Intro to React
-- Building Your First React App
-- React State Management
 - React Components
+- React State Management
 
 ## Content
 
