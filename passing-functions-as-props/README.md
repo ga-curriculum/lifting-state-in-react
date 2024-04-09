@@ -9,29 +9,25 @@ We must first learn how to pass a function down through props to lift state. Tha
 For example, passing a string might look like the following:
 
 ```jsx
-  // Define the string variable in the parent component:
-  const myString = 'Hello World!';
+// Define the string variable in the parent component:
+const myString = 'Hello World!';
 
-  // Pass down props:
-  return (
-    <ChildComponent myString={myString} />
-  );
+// Pass down props:
+return <ChildComponent myString={myString} />;
 ```
 
-Within `ChildComponent`, that string value can be accessed through `props.myString`. 
+Within `ChildComponent`, that string value can be accessed through `props.myString`.
 
 Similarly, passing a function might look like this:
 
 ```jsx
-  // Define the function in the parent component:
-  const greetUser = () => {
-    return 'Hello World!';
-  };
+// Define the function in the parent component:
+const greetUser = () => {
+  return 'Hello World!';
+};
 
-  // Pass down props:
-  return (
-    <ChildComponent greetUser={greetUser} />
-  );
+// Pass down props:
+return <ChildComponent greetUser={greetUser} />;
 ```
 
 In `ChildComponent`, the function can be called upon to get its return value:
@@ -50,13 +46,13 @@ As you can see, functions can be passed down through props like any other data.
 
 ## Lifting state through props
 
-Now that we've seen how functions can be passed down as props, let's add complexity. 
+Now that we've seen how functions can be passed down as props, let's add complexity.
 
-To effectively 'lift state up', the function passed from the parent component to the child component must alter the parent component's state. Once a child component receives a state-modifying function through props, it can *call upon* that function and thereby influence the parent component's state.
+To effectively 'lift state up', the function passed from the parent component to the child component must alter the parent component's state. Once a child component receives a state-modifying function through props, it can _call upon_ that function and thereby influence the parent component's state.
 
 Let's apply this concept with a small counter-application. In our app, we'll display a counter in `src/App.jsx`, and build a functionality that allows a child component to increment the value of the count.
 
-Run the following command in your terminal:
+Let's create a new component called `IncrementButton`:
 
 ```bash
 touch src/components/IncrementButton.jsx
@@ -69,11 +65,7 @@ Add the following to `src/components/IncrementButton.jsx`:
 ```jsx
 // src/components/IncrementButton.jsx
 const IncrementButton = (props) => {
-  return (
-    <button>
-      Increment
-    </button>
-  );
+  return <button>Increment</button>;
 };
 
 export default IncrementButton;
@@ -100,8 +92,8 @@ import { useState } from 'react';
 Within the `App` function, define `count` state with an initial value of `0`:
 
 ```jsx
-  // src/App.jsx
-  const [count, setCount] = useState(0);
+// src/App.jsx
+const [count, setCount] = useState(0);
 ```
 
 Next, we can address the function that will update the state. The function should increment the current `count` value by `1`.
@@ -111,10 +103,10 @@ This function must be defined in the parent `App` component, where the `count` s
 Add the following function:
 
 ```jsx
-  // src/App.jsx
-  const addOne = () => {
-    setCount(count + 1);
-  };
+// src/App.jsx
+const addOne = () => {
+  setCount(count + 1);
+};
 ```
 
 Next, we can render the `IncrementButton` component and pass down the `addOne` function through props.
@@ -122,13 +114,13 @@ Next, we can render the `IncrementButton` component and pass down the `addOne` f
 Update the `return` in `src/App.jsx` with the following:
 
 ```jsx
-  // src/App.jsx
-  return (
-    <>
-      <p>Count: {count}</p>
-      <IncrementButton addOne={addOne} />
-    </>
-  );
+// src/App.jsx
+return (
+  <>
+    <p>Count: {count}</p>
+    <IncrementButton addOne={addOne} />
+  </>
+);
 ```
 
 Our final step is to update the `<button>` with an `onClick` event handler. The event handler should trigger the `addOne` function whenever a user clicks the button. Remember, the function can be accessed through the props object with `props.addOne`.
@@ -137,11 +129,9 @@ In `src/components/IncrementButton.jsx`, update the `<button>` as shown below:
 
 ```jsx
 // src/components/IncrementButton.jsx
-  return (
-    <button onClick={props.addOne}>
-      Increment
-    </button>
-  );
+return <button onClick={props.addOne}>Increment</button>;
 ```
 
 When we click the 'Increment' button, it calls upon the `addOne` function as defined in `App`. The `addOne` function updates the `count` state and triggers a rerender with the increased display count. Through this, the child component can enact state changes on the parent.
+
+Check your code in the browser to see the state of `App` update.

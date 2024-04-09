@@ -2,12 +2,5 @@
 
 ## Lesson references
 
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
-
-## Level Up references
-
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
-- [tktk descriptive name of link]()
+- [React Docs: Choosing the State Structure](https://react.dev/learn/choosing-the-state-structure)
+- [React Docs: Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)

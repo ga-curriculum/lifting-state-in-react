@@ -2,7 +2,7 @@
 
 ## About
 
-In this module, students will learn how to lift state up to a parent component and pass functions as props to child components. They will also learn about the implications of unidirectional data flow in React.
+In this module, we focus on the concept of lifting state in React applications. Students will learn the techniques for moving state up to parent components and how to pass functions down to child components as props. The module also covers the principles of unidirectional data flow in React, exploring its impact on application design and component interaction.
 
 ## Prerequisites
 
@@ -13,12 +13,13 @@ In this module, students will learn how to lift state up to a parent component a
 
 ## Content
 
-| Lesson | Skills |
-| ------ | ------ |
-| [Setup](./setup/README.md) | Setting up the development environment |
-| [Concepts](./concepts/README.md) | Describe the implications of unidirectional data flow |
-| [Passing Functions as Props](./passing-functions-as-props/README.md) | Pass a function as a prop |
-| [Sharing State Between Components](./sharing-state-between-components/README.md) | Lift State Upwards to a Parent Component |
+| Lesson                                                                           | Skills                                                                  |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| [Setup](./setup/README.md)                                                       | Setting up the development environment                                  |
+| [Concepts](./concepts/README.md)                                                 | describe how lifting state solves the issue of unidirectional data flow |
+| [Passing Functions as Props](./passing-functions-as-props/README.md)             | Pass a function as a prop                                               |
+| [Lifting State](./lifting-state/README.md)                                       | Lift State Upwards to a Parent Component                                |
+| [Sharing State Between Components](./sharing-state-between-components/README.md) | Updating Parent state and passing props to sibling components           |
 
 ## References
 
