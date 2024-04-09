@@ -1,4 +1,4 @@
-# ![Lifting State In React Components - Setup](./assets/hero.png)
+# ![Lifting State In React - Setup](./assets/hero.png)
 
 ## Setup
  
@@ -14,7 +14,7 @@ Create a new Vite project for your React app:
 npm create vite@latest
 ```
 
-You'll be prompted to choose a project name. Let's name it `lifting-state-in-react-components`. 
+You'll be prompted to choose a project name. Let's name it `lifting-state-in-react`. 
 
 - Select a framework. Use the arrow keys to choose the `React` option and hit `Enter`.
 
@@ -23,7 +23,7 @@ You'll be prompted to choose a project name. Let's name it `lifting-state-in-rea
 Navigate to your new project directory and install the necessary dependencies:
 
 ```bash
-cd lifting-state-in-react-components
+cd lifting-state-in-react
 npm i
 ```
 
@@ -67,6 +67,12 @@ const App = () => {
 export default App
 ```
 
+### Create a new directory to hold future components
+
+```bash
+mkdir components
+```
+
 ### GitHub setup
 
 To add this project to GitHub, initialize a Git repository:
@@ -75,12 +81,12 @@ To add this project to GitHub, initialize a Git repository:
 git init
 ```
 
-Make a new repository on [GitHub](https://github.com/) named `lifting-state-in-react-components`. 
+Make a new repository on [GitHub](https://github.com/) named `lifting-state-in-react`. 
 
 Link your local project to your remote GitHub repo:
 
 ```bash
-git remote add origin https://github.com/<github-username>/lifting-state-in-react-components.git
+git remote add origin https://github.com/<github-username>/lifting-state-in-react.git
 git push origin main
 ```
 
