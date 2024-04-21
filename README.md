@@ -11,13 +11,14 @@ In this module, we focus on the concept of lifting state in React applications. 
 
 ## Content
 
-| Lesson                                                                           | Skills                                                                  |
-| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| [Setup](./setup/README.md)                                                       | Setting up the development environment                                  |
-| [Concepts](./concepts/README.md)                                                 | describe how lifting state solves the issue of unidirectional data flow |
-| [Passing Functions as Props](./passing-functions-as-props/README.md)             | Pass a function as a prop                                               |
-| [Lifting State](./lifting-state/README.md)                                       | Lift State Upwards to a Parent Component                                |
-| [Sharing State Between Components](./sharing-state-between-components/README.md) | Updating Parent state and passing props to sibling components           |
+| Lesson | Video Time | Video | Skills |
+| ------ | :--------: | :---: | ------ |
+| [Setup](./setup/README.md)                                                       | -- | -- | Setting up the development environment.                                  |
+| [Concepts](./concepts/README.md)                                                 | -- | -- | Describe how lifting state solves the issue of unidirectional data flow. |
+| [Passing Functions as Props](./passing-functions-as-props/README.md)             | -- | -- | Pass a function as a prop.                                               |
+| [Lifting State](./lifting-state/README.md)                                       | -- | -- | Lift state upwards to a parent component.                                |
+| [Sharing State Between Components](./sharing-state-between-components/README.md) | -- | -- | Updating parent state and passing props to sibling components.           |
+| Total content                                                                    | -- | -- |                                                                          |
 
 ## References
 

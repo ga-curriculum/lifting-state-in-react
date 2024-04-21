@@ -1,7 +1,7 @@
 # ![Lifting State In React - Setup](./assets/hero.png)
 
 ## Setup
- 
+
 Open your Terminal application and navigate to your `~/code/ga/lectures` directory:
 
 ```bash
@@ -14,7 +14,7 @@ Create a new Vite project for your React app:
 npm create vite@latest
 ```
 
-You'll be prompted to choose a project name. Let's name it `lifting-state-in-react`. 
+You'll be prompted to choose a project name. Let's name it `lifting-state-in-react`.
 
 - Select a framework. Use the arrow keys to choose the `React` option and hit `Enter`.
 
@@ -27,7 +27,13 @@ cd lifting-state-in-react
 npm i
 ```
 
-Open the project's folder in your code editor:
+Create a new directory to hold future components:
+
+```bash
+mkdir src/components
+```
+
+Then, open the project's folder in your code editor:
 
 ```bash
 code .
@@ -62,32 +68,7 @@ const App = () => {
   return (
     <h1>Hello world!</h1>
   );
-}
+};
 
-export default App
+export default App;
 ```
-
-### Create a new directory to hold future components
-
-```bash
-mkdir components
-```
-
-### GitHub setup
-
-To add this project to GitHub, initialize a Git repository:
-
-```bash
-git init
-```
-
-Make a new repository on [GitHub](https://github.com/) named `lifting-state-in-react`. 
-
-Link your local project to your remote GitHub repo:
-
-```bash
-git remote add origin https://github.com/<github-username>/lifting-state-in-react.git
-git push origin main
-```
-
-> 🚨 Do not copy the above command. It will not work. Your GitHub username will replace `<github-username>` (including the `<` and `>`) in the URL above.
