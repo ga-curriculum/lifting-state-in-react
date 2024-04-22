@@ -4,7 +4,7 @@
 
 ## Setting up state for `App`
 
-This next section aims to set up a state for the `App` component and incorporate the `newTodo` data coming up from the `<NewTodo>` child component. Let's start by initializing state in `App.js`. At the top of the file, import `useState`:
+This next section aims to set up a state for the `App` component and incorporate the `newTodo` data coming up from the `<NewTodo>` child component. Let's start by initializing state in `App.jsx`. At the top of the file, import `useState`:
 
 ```js
 // src/App.jsx
@@ -153,7 +153,7 @@ There's nothing too exciting here. It's currently a standalone component with a 
 import TodoList from './components/TodoList.jsx';
 ```
 
-Add it to the `return` statement in `App.jsx` and replace the `<ul>` we created in the last section. The `return` statement in `App.js` should now look like this:
+Add it to the `return` statement in `App.jsx` and replace the `<ul>` we created in the last section. The `return` statement in `App.jsx` should now look like this:
 
 ```jsx
 // src/App.jsx
