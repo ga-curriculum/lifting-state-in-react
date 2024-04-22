@@ -126,7 +126,7 @@ Now, the `addTodo` function, defined in `App.jsx`, will be available within `New
 
 Back in the browser, click the **Create to-do** button and check the console to ensure the text "data created within NewTodo component" has been logged. The important thing here is that the text was logged by `addTodo` in `App.jsx`. This function was called by `handleSubmit` within `NewTodo.jsx`. There, we passed `props.addTodo` an argument of `'data created within NewTodo component'`.
 
-tktk Hunter, could you create a CHD here showing what we have so far (addTodo being passed down as a prop from App to New Todo)
+![Add todo](./assets/add-todo.png)
 
 ## Setting up state for the `NewTodo` form
 
@@ -166,7 +166,7 @@ Update your form in `NewTodo.jsx` like so:
     </form>
 ```
 
-tktk Hunter, another CHD with the `newTodo` state added here would be cool.
+![New todo](./assets/new-todo.png)
 
 Finally, create the `handleChange` function, which will be called when the user types in the text input. It will invoke `setNewTodo`, passing in the value of the input that the user entered:
 
@@ -199,7 +199,7 @@ In `NewTodo.jsx`, update your `handleSubmit` function to accomplish this:
 
 Check back in the browser. Type something into the input and click the **Create to-do** button. You should now see that the browser console has logged your input text. Yay!
 
-tktk Hunter, could you add a CHD with `newTodo` state being lifted to the App component here? Related to this, see my tktk at the end of the [Sharing State Between Components microlesson](../sharing-state-between-components/README.md).
+![Lifting state](./assets/lifting.png)
 
 Let's add a new feature to improve the user experience. When we click the **Create to-do** button, the text we entered in the `<input>` tag remains. It'd be nice if that value were cleared out so that it's easier for the user to enter additional to-do items.
 
