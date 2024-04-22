@@ -94,8 +94,6 @@ Nice! Check the browser. Type something into the text input and click the **Crea
 
 We've successfully moved data from a child component into the parent's state.
 
-tktk Hunter, Could you add a CHD with our new todos state in App here?
-
 ### Displaying the to-dos
 
 Now that we've got the `App` component's `todos` state variable updating properly, all we need to do now is display items on the page. Update the `return` statement in `App.jsx` like so:
@@ -204,7 +202,5 @@ export default TodoList;
 ```
 
 ![Lifting state](./assets/lifting.png)
-
-tktk Hunter, can you change `todoFormData` to `newTodo` in this? Also, would you be opposed to `addTodo(newTodo)` here? That might make it more clear that's the mechanism being used to lift the `newTodo` state? I could go either way, just thinking out loud.
 
 Congrats! You have now lifted state up from `NewTodo.jsx` into `App.jsx` and then passed it back down into `TodoList.jsx`, effectively moving state from `NewTodo.jsx` to its sibling component `TodoList.jsx`.
