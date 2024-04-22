@@ -199,7 +199,7 @@ In `NewTodo.jsx`, update your `handleSubmit` function to accomplish this:
 
 Check back in the browser. Type something into the input and click the **Create to-do** button. You should now see that the browser console has logged your input text. Yay!
 
-tktk Hunter, coudl you add a CHD with `newTodo` state being lifted to the App component here?
+tktk Hunter, could you add a CHD with `newTodo` state being lifted to the App component here? Related to this, see my tktk at the end of the [Sharing State Between Components microlesson](../sharing-state-between-components/README.md).
 
 Let's add a new feature to improve the user experience. When we click the **Create to-do** button, the text we entered in the `<input>` tag remains. It'd be nice if that value were cleared out so that it's easier for the user to enter additional to-do items.
 
