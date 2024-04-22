@@ -64,7 +64,7 @@ const NewTodo = (props) => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="todoInput">Todo: </label>
       <input id="todoInput" type="text" name="todo" />
-      <button>Create to-do</button>
+      <button type="submit">Create to-do</button>
     </form>
   );
 };
@@ -162,7 +162,7 @@ Update your form in `NewTodo.jsx` like so:
         onChange={handleChange}
         value={newTodo}
       />
-      <button>Create to-do</button>
+      <button type="submit">Create to-do</button>
     </form>
 ```
 
