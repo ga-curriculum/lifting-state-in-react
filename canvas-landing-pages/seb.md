@@ -8,12 +8,12 @@ In this module, we focus on the concept of lifting state in React applications. 
 
 | Lesson | Video Time | Video | Skills |
 | ------ | :--------: | :---: | ------ |
-| [Setup](../setup/README.md)                                                       | -- | -- | Setting up the development environment.                                  |
-| [Concepts](../concepts/README.md)                                                 | -- | -- | Describe how lifting state solves the issue of unidirectional data flow. |
-| [Passing Functions as Props](../passing-functions-as-props/README.md)             | -- | -- | Pass a function as a prop.                                               |
-| [Lifting State](../lifting-state/README.md)                                       | -- | -- | Lift state upwards to a parent component.                                |
-| [Sharing State Between Components](../sharing-state-between-components/README.md) | -- | -- | Updating parent state and passing props to sibling components.           |
-| Total content                                                                     | -- | -- |                                                                          |
+| [Setup](../setup/README.md)                                                       |  2 min | [link](https://generalassembly.wistia.com/medias/uciw7ykvcy) | Setting up the development environment.                                  |
+| [Concepts](../concepts/README.md)                                                 |  4 min | [link](https://generalassembly.wistia.com/medias/97c57nkqgj) | Describe how lifting state solves the issue of unidirectional data flow. |
+| [Passing Functions as Props](../passing-functions-as-props/README.md)             |  6 min | [link](https://generalassembly.wistia.com/medias/jno2ozr51v) | Pass a function as a prop.                                               |
+| [Lifting State](../lifting-state/README.md)                                       |  9 min | [link](https://generalassembly.wistia.com/medias/0i8k324ldp) | Lift state upwards to a parent component.                                |
+| [Sharing State Between Components](../sharing-state-between-components/README.md) |  9 min | [link](https://generalassembly.wistia.com/medias/k9879ho2ns) | Updating parent state and passing props to sibling components.           |
+| Total content                                                                     | 30 min |                                                              |                                                                          |
 
 ## References
 
