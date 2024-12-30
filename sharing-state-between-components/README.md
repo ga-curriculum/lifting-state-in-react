@@ -1,4 +1,7 @@
-# ![Lifting State in React - Sharing State Between Components](./assets/hero.png)
+<h1>
+  <span class="headline">Lifting State in React</span>
+  <span class="subhead">Sharing State Between Components</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to transfer state from one component to its sibling through their parent's state.
 
@@ -6,7 +9,7 @@
 
 This next section aims to set up a state for the `App` component and incorporate the `newTodo` data coming up from the `<NewTodo>` child component. Let's start by initializing state in `App.jsx`. At the top of the file, import `useState`:
 
-```js
+```jsx
 // src/App.jsx
 
 import { useState } from 'react';
@@ -14,7 +17,7 @@ import { useState } from 'react';
 
 Inside the `App` function, initialize a state variable `todo` as an empty array and generate its setter function:
 
-```js
+```jsx
 // src/App.jsx
 
   const [todos, setTodos] = useState([]);
@@ -39,7 +42,7 @@ Let's implement the correct method of setting our `todos` state.
 
 1. So, we start with a brand new empty array inside `addTodo`:
 
-   ```js
+   ```jsx
    // src/App.jsx
 
      const addTodo = (newTodo) => {
@@ -49,7 +52,7 @@ Let's implement the correct method of setting our `todos` state.
 
 2. Now alter that statement to use the spread operator `...`, which takes the values of an array and *spreads* or copies them into a new array:
 
-   ```js
+   ```jsx
    // src/App.jsx
 
      const addTodo = (newTodo) => {
@@ -59,7 +62,7 @@ Let's implement the correct method of setting our `todos` state.
 
 3. Now, `updatedTodos` is just a duplicate of `todos`. Let's add the `newTodo` as a new item at the end of the array:
 
-   ```js
+   ```jsx
    // src/App.jsx
 
      const addTodo = (newTodo) => {
@@ -69,7 +72,7 @@ Let's implement the correct method of setting our `todos` state.
 
 4. We can now pass this new array into `setTodos` (adding a console log for testing):
 
-   ```js
+   ```jsx
    // src/App.jsx
 
      const addTodo = (newTodo) => {

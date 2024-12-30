@@ -1,4 +1,7 @@
-# ![Lifting State in React - Concepts](./assets/hero.png)
+<h1>
+  <span class="headline">Lifting State in React</span>
+  <span class="subhead">Concepts</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to describe how lifting state solves the issue of unidirectional data flow in React.
 

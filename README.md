@@ -1,13 +1,11 @@
-# ![Lifting State in React](./assets/hero.png)
+<h1>
+  <span class="prefix"></span>
+  <span class="headline">Lifting State in React</span>
+</h1>
 
 ## About
 
-In this module, we focus on the concept of lifting state in React applications. Students will learn the techniques for moving state up to parent components and how to pass functions down to child components as props. The module also covers the principles of unidirectional data flow in React, exploring its impact on application design and component interaction.
-
-## Prerequisites
-
-- React Components
-- React State Management
+In this module, we focus on the concept of lifting state in React applications. We'll learn the techniques for moving state up to parent components and how to pass functions down to child components as props. The module also covers the principles of unidirectional data flow in React, exploring its impact on application design and component interaction.
 
 ## Content
 
@@ -24,7 +22,20 @@ In this module, we focus on the concept of lifting state in React applications. 
 
 📖 [Reference Materials](./references/README.md)
 
-## Internal resources
+## Internal
+
+### Prerequisites
+
+- React Components
+- React State Management
+
+### Course landing pages
+
+- [RDS - React Development Short Course](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/lifting-state-in-react/canvas-landing-pages/rds.html)
+- [SEB - Software Engineering Bootcamp](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/lifting-state-in-react/canvas-landing-pages/seb.html)
+- [Fallback](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/lifting-state-in-react/canvas-landing-pages/fallback.html)
+
+### Resources
 
 ✏️ [Instructor Guide](./internal-resources/instructor-guide.md)
 
@@ -34,4 +45,4 @@ In this module, we focus on the concept of lifting state in React applications. 
 
 ---
 
-**Find a 👾 bug 👾 or have suggestions? [Let us know](https://git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/blob/main/module-feedback.md)!**
+**Find a 👾 bug 👾 or have suggestions? [Let us know](https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/module-feedback.html)!**

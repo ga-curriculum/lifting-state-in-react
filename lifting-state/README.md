@@ -1,4 +1,7 @@
-# ![Lifting State in React - Lifting State](./assets/hero.png)
+<h1>
+  <span class="headline">Lifting State in React</span>
+  <span class="subhead">Lifting State</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will be able to transfer state from one component to its parent
 
@@ -134,7 +137,7 @@ At this point, we can pass information to the parent via the `addTodo` function.
 
 At the top of `NewTodo.jsx` import `useState`, so that we can keep track of what the user has typed:
 
-```js
+```jsx
 // src/components/NewTodo.jsx
 
 import { useState } from 'react';
@@ -142,7 +145,7 @@ import { useState } from 'react';
 
 Now initialize the state and its setter function inside the `NewTodo` function:
 
-```js
+```jsx
 // src/components/NewTodo.jsx
 
 const [newTodo, setNewTodo] = useState('');

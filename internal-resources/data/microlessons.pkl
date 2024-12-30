@@ -1,0 +1,39 @@
+import "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/static/v2/pkl/template.pkl" as Template
+
+// Add microlessons here, in the order they should be delivered
+
+setup = new Template.Microlesson {
+  friendlyName = "Setup"
+  dirName = "setup"
+  type = "Content"
+  videoUrl = "https://generalassembly.wistia.com/medias/uciw7ykvcy"
+}
+
+concepts = new Template.Microlesson {
+  friendlyName = "Concepts"
+  dirName = "concepts"
+  type = "Content"
+  videoUrl = "https://generalassembly.wistia.com/medias/97c57nkqgj"
+}
+
+passingFunctionsAsProps = new Template.Microlesson {
+  friendlyName = "Passing Functions as Props"
+  dirName = "passing-functions-as-props"
+  type = "Content"
+  videoUrl = "https://generalassembly.wistia.com/medias/jno2ozr51v"
+}
+
+liftingState = new Template.Microlesson {
+  friendlyName = "Lifting State"
+  dirName = "lifting-state"
+  type = "Content"
+  videoUrl = "https://generalassembly.wistia.com/medias/0i8k324ldp"
+}
+
+sharingStateBetweenComponents = new Template.Microlesson {
+  friendlyName = "Sharing State Between Components"
+  dirName = "sharing-state-between-components"
+  type = "Content"
+  videoUrl = "https://generalassembly.wistia.com/medias/k9879ho2ns"
+}
+

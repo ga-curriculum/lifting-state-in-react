@@ -1,4 +1,7 @@
-# ![Lifting State in React - Passing Functions as Props](./assets/hero.png)
+<h1>
+  <span class="headline">Lifting State in React</span>
+  <span class="subhead">Passing Functions as Props</span>
+</h1>
 
 **Learning objective:** By the end of this lesson, students will understand how to pass functions as props in React.
 
